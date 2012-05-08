@@ -8,7 +8,7 @@ package onirim.entity;
  *
  * @author Marco António
  */
-public class NightMare extends Entity {
+public class NightMare extends Card {
 
     public NightMare() {
         super("NIGHTMARE");

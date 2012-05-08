@@ -8,11 +8,11 @@ package onirim.entity;
  *
  * @author Marco António
  */
-public class Entity {
+public class Card {
 
     private String type;
 
-    public Entity(String type) {
+    public Card(String type) {
         this.type = type;
     }
 

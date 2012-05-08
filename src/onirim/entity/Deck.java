@@ -14,10 +14,10 @@ import java.util.List;
  */
 public class Deck {
 
-    private List<Entity> cards;
+    private List<Card> cards;
     
     public Deck() {
-        cards = new ArrayList<Entity>();
+        cards = new ArrayList<Card>();
         
         //adding 8 doors
         for (int i = 0; i < 2; i++) {
@@ -69,15 +69,61 @@ public class Deck {
         } 
     }
      
-
+    //shuffling
     public void shuffle() {
         Collections.shuffle(cards);
     }
     
-    public Entity drawCard() {
+    //draw top card
+    public Card drawCard() {
         return cards.remove(0);
     }
     
+    //show top 5 cards
+    public List<Card> showTopCards() {
+        List<Card> topCards = new ArrayList<Card>();
+        
+        for (int i = 0; i < 5; i++) {
+            topCards.add(cards.remove(0));
+        }
+        
+        return topCards;
+    }
     
+    //buy 5 cards
+    public List<Card> buyCards() {
+        List<Card> cardsPurchased = new ArrayList<Card>();
+        
+        for (int i = 0; i < 5; i++) {
+            cardsPurchased.add(cards.remove(0));
+        }
+        
+        return cardsPurchased;
+    }
+
+    //add limbo cards to deck
+    public void addLimboCards(List<Card> limboCards) {
+        cards.addAll(limboCards);
+        this.shuffle();
+    }
+    
+    //search card on deck
+    public void searchCard(Card card) {
+        Card cardFound = null;
+        
+        for (int i = 0; i < cards.size(); i++) {
+            if (cards.get(i).equals(card)) {
+                cardFound = cards.remove(i);
+            }
+        }
+        
+        if (cardFound == null) {
+            return null;
+        }
+        
+        this.shuffle();
+        
+        return cardFound;
+    }
 }
 
