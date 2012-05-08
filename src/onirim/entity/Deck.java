@@ -108,7 +108,7 @@ public class Deck {
     }
     
     //search card on deck
-    public void searchCard(Card card) {
+    public Card searchCard(Card card) {
         Card cardFound = null;
         
         for (int i = 0; i < cards.size(); i++) {
