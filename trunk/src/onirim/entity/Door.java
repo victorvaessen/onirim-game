@@ -8,7 +8,7 @@ package onirim.entity;
  *
  * @author Marco António
  */
-public class Door extends Entity {
+public class Door extends Card {
     
     private String color;
     

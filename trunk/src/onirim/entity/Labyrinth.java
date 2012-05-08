@@ -8,7 +8,7 @@ package onirim.entity;
  *
  * @author Marco António
  */
-public class Labyrinth extends Entity {
+public class Labyrinth extends Card {
         
     private String color;
     private String symbol;
