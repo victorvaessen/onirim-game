@@ -9,9 +9,18 @@ package onirim.entity;
  * @author Marco António
  */
 public class Door extends Entity {
-
-    public Door(String color, String type) {
-        super(color, type);
+    
+    private String color;
+    
+    public Door(String color) {
+        super("DOOR");
     }
  
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
 }

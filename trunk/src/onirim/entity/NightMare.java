@@ -10,8 +10,8 @@ package onirim.entity;
  */
 public class NightMare extends Entity {
 
-    public NightMare(String color, String type) {
-        super(color, type);
+    public NightMare() {
+        super("NIGHTMARE");
     }
     
 }

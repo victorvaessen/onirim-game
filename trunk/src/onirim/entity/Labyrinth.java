@@ -9,12 +9,20 @@ package onirim.entity;
  * @author Marco António
  */
 public class Labyrinth extends Entity {
-    
+        
+    private String color;
     private String symbol;
 
-    public Labyrinth(String symbol, String color, String type) {
-        super(color, type);
+    public Labyrinth(String symbol, String color) {
+        super("LABYRINTH");
         this.symbol = symbol;
     }
     
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
 }
