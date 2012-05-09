@@ -4,10 +4,46 @@
  */
 package onirim.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Marco António
  */
 public class DiscardStack {
+     
+     List<Card> cards;
+
+    public DiscardStack() {
+        cards = new ArrayList<Card>();
+    }
+    
+    public void addCard(Card card) {
+        cards.add(card);
+    }
+    
+    public void addCards(List<Card> discardCards)
+    {
+        cards.addAll(discardCards);
+    }
+     
+    public List<Card> showAll() {
+        return cards;
+    }
+
+    @Override
+    public String toString() {
+            String toString = "DISCARDSTACK:\n";
+        
+        for (int i = 0; i < cards.size(); i++) {
+            toString += "\n[" + i + 1 +"]" + cards.get(i).toString();
+        }
+        
+        return toString;
+       
+    }
+
+    
     
 }
