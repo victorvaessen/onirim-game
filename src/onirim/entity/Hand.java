@@ -46,5 +46,18 @@ public class Hand {
 
     public List<Card> show() {
         return cards;
-    } 
+    }
+
+    @Override
+    public String toString() {
+        String toString = "HAND:\n";
+        
+        for (int i = 0; i < cards.size(); i++) {
+            toString += "\n" + cards.get(i).toString();
+        }
+        
+        return toString;
+    }
+    
+    
 }
