@@ -5,6 +5,7 @@
 package onirim.state;
 
 import onirim.Onirim;
+import onirim.entity.Limbo;
 
 /**
  *
@@ -24,9 +25,10 @@ public class StartState implements State {
         onirim.getDeck().shuffle();
         onirim.getHand().init(onirim.getDeck().buyCards());
 
-        boolean badHand = false;
+        boolean badHand;
 
         do {
+            badHand = false;
             for (int i = 0; i < onirim.getHand().show().size(); i++) {
                 if (onirim.getHand().show().get(i).getType().equals("DOOR")
                         || onirim.getHand().show().get(i).getType().equals("NIGHTMARE")) {

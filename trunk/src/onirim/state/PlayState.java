@@ -4,11 +4,7 @@
  */
 package onirim.state;
 
-import java.util.List;
 import onirim.Onirim;
-import onirim.entity.Card;
-import onirim.entity.Door;
-import onirim.entity.Labyrinth;
 
 /**
  *
@@ -30,13 +26,16 @@ public class PlayState implements State{
     @Override
     public void play() {
         
-        System.out.println();
+        System.out.println(onirim.getHand().toString());
+        
+        System.out.println("Choose a card to play: ");
 
     }
 
     @Override
     public void discard() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        
+        System.out.println(onirim.getHand().toString());
     }
 
     @Override

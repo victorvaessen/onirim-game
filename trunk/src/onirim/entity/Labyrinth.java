@@ -16,6 +16,7 @@ public class Labyrinth extends Card {
     public Labyrinth(String symbol, String color) {
         super("LABYRINTH");
         this.symbol = symbol;
+        this.color = color;
     }
     
     public String getColor() {
@@ -28,6 +29,6 @@ public class Labyrinth extends Card {
     
     @Override
     public String toString() {
-        return "LABYRINTH " + color + " " + symbol;
+        return "LABYRINTH\t" + color + "\t" + symbol;
     }
 }

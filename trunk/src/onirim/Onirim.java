@@ -5,6 +5,8 @@
 package onirim;
 
 import onirim.entity.*;
+import onirim.state.PlayState;
+import onirim.state.StartState;
 import onirim.state.State;
 
 /**
@@ -15,7 +17,8 @@ public class Onirim {
 
     private State startState;
     private State playState;
-    private State state = startState;
+    private State state;
+    
     private Deck deck;
     private Hand hand;
     private Limbo limbo;
@@ -24,8 +27,20 @@ public class Onirim {
     private DoorStack doorStack;
 
     public Onirim() {
+        startState = new StartState(this);
+        playState = new PlayState(this);
+        
+        deck = new Deck();
+        hand = new Hand();
+        limbo = new Limbo();
+        discardStack = new DiscardStack();
+        labyrinthStack = new LabyrinthStack();
+        doorStack = new DoorStack();
+        
+        state = startState;
     }
 
+    
     public Deck getDeck() {
         return deck;
     }
@@ -88,5 +103,21 @@ public class Onirim {
 
     public State getStartState() {
         return startState;
+    }
+
+    public void buyHand() {
+        state.buyHand();
+    }
+
+    public void play() {
+        state.play();
+    }
+
+    public void discard() {
+        state.discard();
+    }
+
+    public void draw() {
+        state.draw();
     }
 }
