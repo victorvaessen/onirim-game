@@ -11,11 +11,11 @@ import java.util.List;
  *
  * @author Marco António
  */
-public class Table {
+public class LabyrinthStack {
 
     List<Card> cards;
 
-    public Table() {
+    public LabyrinthStack() {
         cards = new ArrayList<Card>();
     }
     

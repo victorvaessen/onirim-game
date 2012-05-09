@@ -10,9 +10,9 @@ package onirim.state;
  */
 public interface State {
 
-    public void play();
-    public void discard();
-    public void buy();
-    public void shuffling();
+    public void buyHand();//comprar mão
+    public void play();//jogar uma carta
+    public void discard();//descartar uma carta
+    public void draw();//biscar uma carta
     
 }
