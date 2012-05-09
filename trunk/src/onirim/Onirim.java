@@ -4,11 +4,20 @@
  */
 package onirim;
 
+import onirim.entity.*;
+
 /**
  *
  * @author Marco António
  */
 public class Onirim {
 
- 
+    Deck deck;
+    Hand hand;
+    Limbo limbo;
+    DiscardStack discardStack;
+    LabyrinthStack labyrinthStack;
+    DoorStack doorStack;
+    
+    
 }
