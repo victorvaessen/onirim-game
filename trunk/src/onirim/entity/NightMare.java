@@ -14,4 +14,9 @@ public class NightMare extends Card {
         super("NIGHTMARE");
     }
     
+    @Override
+    public String toString() {
+        return "NIGHTMARE";
+    }
+    
 }

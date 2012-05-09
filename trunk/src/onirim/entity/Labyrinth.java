@@ -22,7 +22,12 @@ public class Labyrinth extends Card {
         return color;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public String getSymbol() {
+        return symbol;
+    }
+    
+    @Override
+    public String toString() {
+        return "LABYRINTH " + color + " " + symbol;
     }
 }
