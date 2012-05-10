@@ -4,10 +4,38 @@
  */
 package onirim.state;
 
+import onirim.Onirim;
+
 /**
  *
  * @author Bino
  */
-public class BuyState {
+public class BuyState implements State {
     
+    private Onirim onirim;
+
+    public BuyState(Onirim onirim) {
+        this.onirim = onirim;
+    }
+    
+    @Override
+    public void buyHand() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void play() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void discard() {
+        throw new UnsupportedOperationException("Not supported yet.");
+   
+    }
+
+    @Override
+    public void draw() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
