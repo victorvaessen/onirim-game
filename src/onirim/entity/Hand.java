@@ -33,7 +33,7 @@ public class Hand {
     public void buyCard(Card card) {
         cards.add(card);
     }
-    
+    //discard all
     public List<Card> discardAll() {
         List<Card> cardsDiscarded = new ArrayList<Card>();
         
@@ -44,10 +44,14 @@ public class Hand {
         return cardsDiscarded;
     }
 
+    //Show all cards
     public List<Card> show() {
         return cards;
     }
 
+    //Verify if that card has in the hand
+   
+    
     @Override
     public String toString() {
         String toString = "HAND:\n";
