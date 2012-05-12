@@ -14,6 +14,7 @@ public class Door extends Card {
     
     public Door(String color) {
         super("DOOR");
+        this.color=color;
     }
  
     public String getColor() {

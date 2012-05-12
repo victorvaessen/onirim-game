@@ -37,13 +37,13 @@ public class CardCorresponding {
         listCard.add(new CardCommand("LCK","LABYRINTH","BROWN","KEY"));
         
         // DOORS COLORS
-        listCard.add(new CardCommand("PR","DOOR","RED",null));
-        listCard.add(new CardCommand("PB","DOOR","BLUE",null));
-        listCard.add(new CardCommand("PG","DOOR","GREEN",null));
-        listCard.add(new CardCommand("PC","DOOR","BROWN",null));
+        listCard.add(new CardCommand("DR","DOOR","RED",null));
+        listCard.add(new CardCommand("DB","DOOR","BLUE",null));
+        listCard.add(new CardCommand("DG","DOOR","GREEN",null));
+        listCard.add(new CardCommand("DC","DOOR","BROWN",null));
         
         // NIGHTMARE 
-        listCard.add(new CardCommand("S","NIGHTMARE",null,null)); 
+        listCard.add(new CardCommand("N","NIGHTMARE",null,null)); 
     }
 
     public ArrayList<CardCommand> getListCard() {

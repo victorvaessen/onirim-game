@@ -76,14 +76,17 @@ public class Deck {
     
     //draw top card
     public Card drawCard() {
-        return cards.remove(0);
+        if(cards.size()>0)
+            return cards.remove(0);
+        else
+            return null;
     }
     
     //show top 5 cards
     public List<Card> showTopCards() {
         List<Card> topCards = new ArrayList<Card>();
         
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5 && i < cards.size(); i++) {
             topCards.add(cards.remove(0));
         }
         
@@ -94,7 +97,7 @@ public class Deck {
     public List<Card> buyCards() {
         List<Card> cardsPurchased = new ArrayList<Card>();
         
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5 && i < cards.size(); i++) {
             cardsPurchased.add(cards.remove(0));
         }
         
@@ -124,6 +127,18 @@ public class Deck {
         this.shuffle();
         
         return cardFound;
+    }
+  
+    public void addBegin(List<Card> topCards)
+    {
+        List<Card> aux = new ArrayList<Card>();
+        
+        for(int i=0;i<cards.size();i++){
+            aux.add(cards.remove(0));
+        }
+        
+        cards.addAll(topCards);
+        cards.addAll(aux);
     }
 }
 
