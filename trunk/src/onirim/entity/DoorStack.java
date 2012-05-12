@@ -23,11 +23,14 @@ public class DoorStack {
         cards.add(card);
     }
     
-    public void addCards(List<Card> discardCards)
-    {
-        cards.addAll(discardCards);
+    public boolean VerifyAllDoorsCollected(){
+    
+        if(this.cards.size()==8)
+            return true;
+        else
+            return false;
+        
     }
-     
     public List<Card> showAll() {
         return cards;
     }
