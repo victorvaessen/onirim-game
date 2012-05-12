@@ -189,7 +189,7 @@ public class PlayState implements State {
                 //discard the card
                 onirim.getDiscardStack().addCard(cards.remove(index));
 
-                // reorganize the other 4
+                // reorganize the other 4 cards
                 while (cards.size() > 0) {
 
                     k++;
