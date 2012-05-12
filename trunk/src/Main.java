@@ -18,6 +18,6 @@ public class Main {
         Onirim onirim = new Onirim();
         
         onirim.buyHand();
-        onirim.play();
+        onirim.discard();
     }
 }

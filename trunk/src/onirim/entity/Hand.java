@@ -50,7 +50,8 @@ public class Hand {
     }
 
     //Verify if that card has in the hand
-   
+
+     
     
     @Override
     public String toString() {

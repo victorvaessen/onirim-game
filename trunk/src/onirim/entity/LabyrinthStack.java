@@ -24,7 +24,9 @@ public class LabyrinthStack {
     }
     
     public Card showLastCard() {
-        return cards.get(cards.size() - 1);
+        if(cards.size()>0)
+            return cards.get(cards.size() - 1);
+        else return null;
     }
     
     public List<Card> showSequence() {
