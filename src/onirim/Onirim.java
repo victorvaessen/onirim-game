@@ -5,9 +5,7 @@
 package onirim;
 
 import onirim.entity.*;
-import onirim.state.PlayState;
-import onirim.state.StartState;
-import onirim.state.State;
+import onirim.state.*;
 
 /**
  *
@@ -17,6 +15,8 @@ public class Onirim {
 
     private State startState;
     private State playState;
+    private State buyState;
+    private State shuffleState;
     private State state;
     
     private Deck deck;
@@ -30,6 +30,8 @@ public class Onirim {
     public Onirim() {
         startState = new StartState(this);
         playState = new PlayState(this);
+        buyState = new BuyState(this);
+        shuffleState= new ShuffleState(this);
         
         deck = new Deck();
         hand = new Hand();
@@ -111,6 +113,14 @@ public class Onirim {
 
     public State getStartState() {
         return startState;
+    }
+
+    public State getBuyState() {
+        return buyState;
+    }
+
+    public State getShuffleState() {
+        return shuffleState;
     }
 
     public void buyHand() {
