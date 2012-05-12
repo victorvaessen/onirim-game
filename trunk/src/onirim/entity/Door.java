@@ -15,7 +15,6 @@ public class Door extends Card {
     public Door(String command, String color) {
         super("DOOR", command);
         this.color = color;
-        this.color=color;
     }
  
     public String getColor() {
@@ -24,7 +23,7 @@ public class Door extends Card {
 
     @Override
     public String toString() {
-        return "DOOR " + color;
+        return "DOOR " + color + " " + this.getCommand();
     }
     
 }
