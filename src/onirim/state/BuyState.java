@@ -4,7 +4,9 @@
  */
 package onirim.state;
 
+
 import onirim.Onirim;
+import onirim.entity.Card;
 
 /**
  *
@@ -36,6 +38,17 @@ public class BuyState implements State {
 
     @Override
     public void draw() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        
+        Card drawCard;
+        
+        do{
+        drawCard=onirim.getDeck().drawCard();
+        
+        if(drawCard.getType().equals("LABYRINTH"))
+            ;
+        
+        }while(onirim.getHand().show().size()<5);
+        
+        
     }
 }
