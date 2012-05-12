@@ -25,7 +25,6 @@ public class Onirim {
     private DiscardStack discardStack;
     private LabyrinthStack labyrinthStack;
     private DoorStack doorStack;
-    private CardCorresponding cardCorresponding;
 
     public Onirim() {
         startState = new StartState(this);
@@ -39,7 +38,6 @@ public class Onirim {
         discardStack = new DiscardStack();
         labyrinthStack = new LabyrinthStack();
         doorStack = new DoorStack();
-        cardCorresponding = new CardCorresponding();
         
         state = startState;
     }
@@ -59,9 +57,6 @@ public class Onirim {
         return discardStack;
     }
     
-    public CardCorresponding getCardCorresponding() {
-        return cardCorresponding;
-    }
     
     public void setDiscardStack(DiscardStack discardStack) {
         this.discardStack = discardStack;
