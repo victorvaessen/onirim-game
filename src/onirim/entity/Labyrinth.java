@@ -13,10 +13,10 @@ public class Labyrinth extends Card {
     private String color;
     private String symbol;
 
-    public Labyrinth(String symbol, String color) {
-        super("LABYRINTH");
-        this.symbol = symbol;
+    public Labyrinth(String symbol, String color, String command) {
+        super("LABYRINTH", command);
         this.color = color;
+        this.symbol = symbol;
     }
     
     public String getColor() {

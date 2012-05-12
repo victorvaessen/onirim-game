@@ -21,46 +21,46 @@ public class Deck {
         
         //adding 8 doors
         for (int i = 0; i < 2; i++) {
-            cards.add(new Door("RED"));
-            cards.add(new Door("BLUE"));
-            cards.add(new Door("GREEN"));
-            cards.add(new Door("BROWN"));
+            cards.add(new Door("DR", "RED"));
+            cards.add(new Door("DB", "BLUE"));
+            cards.add(new Door("DG", "GREEN"));
+            cards.add(new Door("DC", "BROWN"));
         }
         
         //adding 9 labyrints red sun
         for (int i = 0; i < 9; i++) {
-            cards.add(new Labyrinth("SUN", "RED"));
+            cards.add(new Labyrinth("SUN", "LSR", "RED"));
         }
         
         //adding 8 labyrints blue sun
         for (int i = 0; i < 8; i++) {
-            cards.add(new Labyrinth("SUN", "BLUE"));
+            cards.add(new Labyrinth("SUN", "LSB", "BLUE"));
         }
         
         //adding 7 labyrints green sun
         for (int i = 0; i < 7; i++) {
-            cards.add(new Labyrinth("SUN", "GREEN"));
+            cards.add(new Labyrinth("SUN", "LSG", "GREEN"));
         }
         
         //adding 6 labyrints brown sun
         for (int i = 0; i < 6; i++) {
-            cards.add(new Labyrinth("SUN", "BROWN"));
+            cards.add(new Labyrinth("SUN", "LSC", "BROWN"));
         }
         
         //adding 12 labyrints keys
         for (int i = 0; i < 3; i++) {
-            cards.add(new Labyrinth("KEY", "RED"));
-            cards.add(new Labyrinth("KEY", "BLUE"));
-            cards.add(new Labyrinth("KEY", "GREEN"));
-            cards.add(new Labyrinth("KEY", "BROWN"));
+            cards.add(new Labyrinth("KEY", "LKR", "RED"));
+            cards.add(new Labyrinth("KEY", "LKB", "BLUE"));
+            cards.add(new Labyrinth("KEY", "LKG", "GREEN"));
+            cards.add(new Labyrinth("KEY", "LKC", "BROWN"));
         }
         
         //adding 4 labyrints moon
         for (int i = 0; i < 4; i++) {
-            cards.add(new Labyrinth("MOON", "RED"));
-            cards.add(new Labyrinth("MOON", "BLUE"));
-            cards.add(new Labyrinth("MOON", "GREEN"));
-            cards.add(new Labyrinth("MOON", "BROWN"));
+            cards.add(new Labyrinth("MOON", "LMR", "RED"));
+            cards.add(new Labyrinth("MOON", "LMB", "BLUE"));
+            cards.add(new Labyrinth("MOON", "LMG", "GREEN"));
+            cards.add(new Labyrinth("MOON", "LMC", "BROWN"));
         }
         
         //adding 10 nightmares

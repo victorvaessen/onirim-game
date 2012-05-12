@@ -11,7 +11,7 @@ package onirim.entity;
 public class NightMare extends Card {
 
     public NightMare() {
-        super("NIGHTMARE");
+        super("NIGHTMARE", "N");
     }
     
     @Override

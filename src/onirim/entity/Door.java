@@ -12,8 +12,9 @@ public class Door extends Card {
     
     private String color;
     
-    public Door(String color) {
-        super("DOOR");
+    public Door(String command, String color) {
+        super("DOOR", command);
+        this.color = color;
         this.color=color;
     }
  
