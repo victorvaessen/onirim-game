@@ -23,7 +23,7 @@ public class Door extends Card {
 
     @Override
     public String toString() {
-        return "DOOR " + color + " " + this.getCommand();
+        return "DOOR " + color + "\t" + this.getCommand();
     }
     
 }
