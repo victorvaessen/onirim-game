@@ -17,6 +17,8 @@ public class Onirim {
     private State playState;
     private State buyState;
     private State shuffleState;
+    private State finalWinState;
+    private State finalLostState;
     private State state;
     
     private Deck deck;
@@ -31,6 +33,8 @@ public class Onirim {
         playState = new PlayState(this);
         buyState = new BuyState(this);
         shuffleState= new ShuffleState(this);
+        finalWinState= new FinalWinState(this);
+        finalLostState= new FinalLostState(this);
         
         deck = new Deck();
         hand = new Hand();
@@ -61,6 +65,7 @@ public class Onirim {
     public void setDiscardStack(DiscardStack discardStack) {
         this.discardStack = discardStack;
     }
+
 
     public DoorStack getDoorStack() {
         return doorStack;
@@ -117,6 +122,15 @@ public class Onirim {
     public State getShuffleState() {
         return shuffleState;
     }
+    
+    public State getFinalWinState() {
+        return finalWinState;
+    }
+
+    public State getFinalLostState() {
+        return finalLostState;
+    }
+    
 
     public void buyHand() {
         state.buyHand();
