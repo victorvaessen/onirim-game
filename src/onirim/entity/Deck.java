@@ -85,8 +85,8 @@ public class Deck {
     //show top 5 cards
     public List<Card> showTopCards() {
         List<Card> topCards = new ArrayList<Card>();
-        
-        for (int i = 0; i < 5 && i < cards.size(); i++) {
+         int size=cards.size();
+        for (int i = 0; i < 5 && i < size; i++) {
             topCards.add(cards.remove(0));
         }
         
@@ -96,8 +96,8 @@ public class Deck {
     //buy 5 cards
     public List<Card> buyCards() {
         List<Card> cardsPurchased = new ArrayList<Card>();
-        
-        for (int i = 0; i < 5 && i < cards.size(); i++) {
+        int size=cards.size();
+        for (int i = 0; i < 5 && i < size; i++) {
             cardsPurchased.add(cards.remove(0));
         }
         
@@ -132,8 +132,8 @@ public class Deck {
     public void addBegin(List<Card> topCards)
     {
         List<Card> aux = new ArrayList<Card>();
-        
-        for(int i=0;i<cards.size();i++){
+        int size=cards.size();
+        for(int i=0;i<size;i++){
             aux.add(cards.remove(0));
         }
         

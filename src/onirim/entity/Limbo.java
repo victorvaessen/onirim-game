@@ -25,8 +25,8 @@ public class Limbo {
     
     public List<Card> clear() {
         List<Card> limboCards = new ArrayList<Card>();
-        
-        for (int i = 0; i < cards.size(); i++) {
+        int size=cards.size();
+        for (int i = 0; i < size; i++) {
             limboCards.add(cards.remove(0));
         }
         

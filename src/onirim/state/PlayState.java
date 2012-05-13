@@ -61,6 +61,7 @@ public class PlayState implements State {
                 if (onirim.getLabyrinthStack().showLastCard() == null) {
                     // the Labyrinth stack is empty
                     onirim.getLabyrinthStack().addCard(onirim.getHand().discard(index));
+                    onirim.setState(onirim.getBuyState());
                     valid = true;
                 } else {   //the Labyrinth stack isn't empty
                     if (((Labyrinth) onirim.getLabyrinthStack().showLastCard()).getSymbol().equals(((Labyrinth) onirim.getHand().show().get(index)).getSymbol())) {
@@ -68,6 +69,7 @@ public class PlayState implements State {
                         System.out.println("You Can´t Play that card because of the symbol");
                     } else {
                         onirim.getLabyrinthStack().addCard(onirim.getHand().discard(index));
+                        onirim.setState(onirim.getBuyState());
                         valid = true;
                     }
                 }
@@ -84,25 +86,28 @@ public class PlayState implements State {
                     }
                 }
                 //Case 3 card same color get the door corresponding
-                 //Falta conferir se deck tam mais cartas...
+
                 if (count == 2) {
                     cardFound = onirim.getDeck().searchCard(new Door(this.DoorCommand(((Labyrinth) onirim.getLabyrinthStack().showSequence().get(0)).getColor()), ((Labyrinth) onirim.getLabyrinthStack().showSequence().get(0)).getColor()));
                     if (cardFound != null) {
                         onirim.getDoorStack().addCard(cardFound);
                         onirim.getDeck().shuffle();
+                    } else {
+                        onirim.setState(onirim.getFinalLostState());
                     }
 
                 }
 
             }
-            //Case 8 door end of the game
-                //if(onirim.getDoorStack().VerifyAllDoorsCollected())
-                //end of the game   
+            if (onirim.getDoorStack().VerifyAllDoorsCollected()) {
+                onirim.setState(onirim.getFinalWinState());
+            }
+
 
         } while (valid == false);
 
-        //Buy Fase
-        onirim.setState(onirim.getBuyState());
+
+
 
     }
 
@@ -119,7 +124,7 @@ public class PlayState implements State {
 
             aux = sc.nextLine();
 
-             // Card its in hand?
+            // Card its in hand?
             index = -1;
             for (int i = 0; i < onirim.getHand().show().size(); i++) {
                 if (onirim.getHand().show().get(i).getCommand().equalsIgnoreCase(aux)) {
@@ -127,14 +132,16 @@ public class PlayState implements State {
                     break;
                 }
             }
-            
+
             if (index == -1) {
                 System.out.println("Command don't exist or the card you want, isn't on hand");
-           
-            }else{
+
+            } else {
                 if (((Labyrinth) onirim.getHand().show().get(index)).getSymbol().equals("KEY")) {
                     //Make Prophecy
                     onirim.getDiscardStack().addCard(onirim.getHand().discard(index));
+                    //Buy Fase
+                    onirim.setState(onirim.getBuyState());
                     this.Prophecy();
                     valid = true;
 
@@ -144,8 +151,8 @@ public class PlayState implements State {
             }
         } while (valid == false);
 
-        //Buy Fase
-        onirim.setState(onirim.getBuyState());
+
+
 
 
     }
@@ -154,19 +161,19 @@ public class PlayState implements State {
     public void draw() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+
     @Override
     public void shuffle() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+
     public void Prophecy() {
 
         int index, k = 0;
         boolean valid = false;
         List<Card> cards = new ArrayList<Card>();
         List<Card> cardsToDeck = new ArrayList<Card>();
-         //Falta conferir se deck tem mais cartas...
+        //Falta conferir se deck tem mais cartas...
         cards.addAll(onirim.getDeck().showTopCards());
 
         do {
@@ -175,7 +182,7 @@ public class PlayState implements State {
             for (int j = 0; j < cards.size(); j++) {
                 System.out.println(cards.get(j));
             }
-            
+
 
             System.out.println("Choose a card to discard from the top of the deck: ");
 
@@ -229,7 +236,7 @@ public class PlayState implements State {
                 //put the cards on the top of the deck
                 onirim.getDeck().addBegin(cardsToDeck);
                 valid = true;
-            } 
+            }
         } while (valid == false);
     }
 
@@ -248,6 +255,4 @@ public class PlayState implements State {
         }
 
     }
-
-   
 }

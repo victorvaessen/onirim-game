@@ -10,14 +10,14 @@ import onirim.Onirim;
  *
  * @author Bino
  */
-public class ShuffleState implements State{
-    
-        private Onirim onirim;
+public class ShuffleState implements State {
+
+    private Onirim onirim;
 
     public ShuffleState(Onirim onirim) {
         this.onirim = onirim;
     }
-    
+
     @Override
     public void buyHand() {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -25,14 +25,14 @@ public class ShuffleState implements State{
 
     @Override
     public void play() {
-        
+
         throw new UnsupportedOperationException("Not supported yet.");
 
     }
 
     @Override
     public void discard() {
-        
+
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -44,7 +44,8 @@ public class ShuffleState implements State{
     @Override
     public void shuffle() {
         onirim.getDeck().addLimboCards(onirim.getLimbo().clear());
-        
+
         onirim.getDeck().shuffle();
+        onirim.setState(onirim.getPlayState());
     }
 }

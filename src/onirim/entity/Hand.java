@@ -36,8 +36,9 @@ public class Hand {
     //discard all
     public List<Card> discardAll() {
         List<Card> cardsDiscarded = new ArrayList<Card>();
+        int size=cards.size();// saber quantas cartas são para descartar
         
-        for (int i = 0; i < cards.size(); i++) {
+        for (int i = 0; i < size; i++) {
             cardsDiscarded.add(cards.remove(0));
         }
         
