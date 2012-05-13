@@ -86,7 +86,8 @@ public class PlayState implements State {
                 //Case 3 card same color get the door corresponding
 
                 if (count == 2) {
-                    cardFound = onirim.getDeck().searchCard(new Door(this.DoorCommand(((Labyrinth) onirim.getLabyrinthStack().showSequence().get(0)).getColor()), ((Labyrinth) onirim.getLabyrinthStack().showSequence().get(0)).getColor()));
+                    //cardFound = onirim.getDeck().searchCard(); -> erro
+                    System.out.println(cardFound);
                     if (cardFound != null) {
                         onirim.getDoorStack().addCard(cardFound);
                         onirim.getDeck().shuffle();
@@ -138,6 +139,7 @@ public class PlayState implements State {
                     valid = true;
 
                 } else {
+                    onirim.getDiscardStack().addCard(onirim.getHand().discard(index));
                     onirim.setState(onirim.getBuyState());
                     valid = true;
                 }
