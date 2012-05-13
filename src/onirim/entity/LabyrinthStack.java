@@ -14,13 +14,28 @@ import java.util.List;
 public class LabyrinthStack {
 
     List<Card> cards;
-
+    List<Labyrinth> sequenceCards;
+    
     public LabyrinthStack() {
         cards = new ArrayList<Card>();
+        sequenceCards = new ArrayList<Labyrinth>();
     }
     
-    public void addCard(Card card) {
+    public boolean addCard(Labyrinth card) {
+        
+        if (sequenceCards.size()>0 && !sequenceCards.get(sequenceCards.size() -1).getColor().equalsIgnoreCase(card.getColor())) {
+            sequenceCards.clear();
+        } else
+            sequenceCards.add(card);
+        
+        if (sequenceCards.size() == 3) {
+            sequenceCards.clear();
+            cards.add(card);
+            return true;
+        }
+        
         cards.add(card);
+        return false;
     }
     
     public Card showLastCard() {
@@ -31,16 +46,16 @@ public class LabyrinthStack {
     
     public List<Card> showSequence() {
         
-        List<Card> sequenceCards = null;
+        List<Card> _sequenceCards = null;
         
         if(cards.size() > 2) {
-            sequenceCards = new ArrayList<Card>();
+            _sequenceCards = new ArrayList<Card>();
             for (int i = cards.size() - 3; i < cards.size(); i++) {
-                sequenceCards.add(cards.get(i));
+                _sequenceCards.add(cards.get(i));
             }
         }
         
-        return sequenceCards;
+        return _sequenceCards;
     }
     
     public List<Card> showAll() {
@@ -49,13 +64,12 @@ public class LabyrinthStack {
 
     @Override
     public String toString() {
-        String toString="\nLABYRINTH STACK:\n";
+        String toString="LABYRINTH STACK:\n";
         
         for (int i = 0; i < cards.size(); i++) {
             toString += "\n" + cards.get(i).toString();
         }
         return toString;
     }
-    
     
 }

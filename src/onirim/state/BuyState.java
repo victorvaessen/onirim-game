@@ -43,7 +43,7 @@ public class BuyState implements State {
         if (onirim.getDeck().deckSize() > 0) {
             do {
                 drawCard = onirim.getDeck().drawCard();
-                System.out.println("Card Draw: " + drawCard.toString());
+                System.out.println("\nCard Draw: " + drawCard.toString() + "\n");
 
                 if (drawCard.getType().equals("DOOR")) {
                     onirim.getLimbo().addCard(drawCard);
