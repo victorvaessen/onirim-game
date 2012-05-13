@@ -40,8 +40,6 @@ public class PlayState implements State {
 
         do {
 
-            System.out.println(onirim.getHand().toString());
-
             System.out.println("Choose a card to play: ");
 
             aux = sc.nextLine();
@@ -105,10 +103,6 @@ public class PlayState implements State {
 
 
         } while (valid == false);
-
-
-
-
     }
 
     @Override
@@ -118,8 +112,6 @@ public class PlayState implements State {
         boolean valid = false;
 
         do {
-            System.out.println(onirim.getHand().toString());
-
             System.out.println("Choose a card to discard: ");
 
             aux = sc.nextLine();
@@ -146,6 +138,7 @@ public class PlayState implements State {
                     valid = true;
 
                 } else {
+                    onirim.setState(onirim.getBuyState());
                     valid = true;
                 }
             }
@@ -173,71 +166,72 @@ public class PlayState implements State {
         boolean valid = false;
         List<Card> cards = new ArrayList<Card>();
         List<Card> cardsToDeck = new ArrayList<Card>();
-        //Falta conferir se deck tem mais cartas...
+
         cards.addAll(onirim.getDeck().showTopCards());
+        if (cards != null) {
+            do {
+                System.out.println("PROPHECY");
 
-        do {
-            System.out.println("PROPHECY");
-
-            for (int j = 0; j < cards.size(); j++) {
-                System.out.println(cards.get(j));
-            }
-
-
-            System.out.println("Choose a card to discard from the top of the deck: ");
-
-            aux = sc.nextLine();
-
-            // Card its in sequence?
-            index = -1;
-            for (int i = 0; i < cards.size(); i++) {
-                if (cards.get(i).getCommand().equalsIgnoreCase(aux)) {
-                    index = i;
-                    break;
+                for (int j = 0; j < cards.size(); j++) {
+                    System.out.println(cards.get(j));
                 }
-            }
-            if (index == -1) {
-                System.out.println("Command don't exist or the card you want, isn't on sequence");
-            } else {
-                // Card is in the sequence
-                //discard the card
-                onirim.getDiscardStack().addCard(cards.remove(index));
 
-                // reorganize the other 4 cards
-                while (cards.size() > 0) {
 
-                    k++;
+                System.out.println("Choose a card to discard from the top of the deck: ");
 
-                    for (int j = 0; j < cards.size(); j++) {
-                        System.out.println(cards.get(j));
+                aux = sc.nextLine();
+
+                // Card its in sequence?
+                index = -1;
+                for (int i = 0; i < cards.size(); i++) {
+                    if (cards.get(i).getCommand().equalsIgnoreCase(aux)) {
+                        index = i;
+                        break;
                     }
+                }
+                if (index == -1) {
+                    System.out.println("Command don't exist or the card you want, isn't on sequence");
+                } else {
+                    // Card is in the sequence
+                    //discard the card
+                    onirim.getDiscardStack().addCard(cards.remove(index));
 
-                    System.out.println("Choose a card to put in " + k + " position on deck");
+                    // reorganize the other 4 cards
+                    while (cards.size() > 0) {
 
-                    aux = sc.nextLine();
+                        k++;
 
-                    index = -1;
-                    for (int i = 0; i < cards.size(); i++) {
-                        if (cards.get(i).getCommand().equalsIgnoreCase(aux)) {
-                            index = i;
-                            break;
+                        for (int j = 0; j < cards.size(); j++) {
+                            System.out.println(cards.get(j));
                         }
-                    }
 
-                    if (index == -1) {
-                        System.out.println("Command don't exist or the card you want, isn't on the sequence");
-                        k--;
-                    } else {
-                        //Put the card on aux stack
-                        cardsToDeck.add(cards.remove(index));
-                    }
+                        System.out.println("Choose a card to put in " + k + " position on deck");
 
+                        aux = sc.nextLine();
+
+                        index = -1;
+                        for (int i = 0; i < cards.size(); i++) {
+                            if (cards.get(i).getCommand().equalsIgnoreCase(aux)) {
+                                index = i;
+                                break;
+                            }
+                        }
+
+                        if (index == -1) {
+                            System.out.println("Command don't exist or the card you want, isn't on the sequence");
+                            k--;
+                        } else {
+                            //Put the card on aux stack
+                            cardsToDeck.add(cards.remove(index));
+                        }
+
+                    }
+                    //put the cards on the top of the deck
+                    onirim.getDeck().addBegin(cardsToDeck);
+                    valid = true;
                 }
-                //put the cards on the top of the deck
-                onirim.getDeck().addBegin(cardsToDeck);
-                valid = true;
-            }
-        } while (valid == false);
+            } while (valid == false);
+        }
     }
 
     public String DoorCommand(String color) {

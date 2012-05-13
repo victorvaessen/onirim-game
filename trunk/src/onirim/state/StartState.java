@@ -43,8 +43,7 @@ public class StartState implements State {
         onirim.getDeck().addLimboCards(onirim.getLimbo().clear());
         onirim.getDeck().shuffle();
         
-        System.out.println(onirim.getHand().toString());
-        
+          
         onirim.setState(onirim.getPlayState());
         
     }
