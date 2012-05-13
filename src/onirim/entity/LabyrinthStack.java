@@ -46,4 +46,16 @@ public class LabyrinthStack {
     public List<Card> showAll() {
         return cards;
     }
+
+    @Override
+    public String toString() {
+        String toString="\n LABYRINTH STACK \n";
+        
+        for (int i = 0; i < cards.size(); i++) {
+            toString += "\n[" + (i + 1) + "] " + cards.get(i).toString();
+        }
+        return toString;
+    }
+    
+    
 }

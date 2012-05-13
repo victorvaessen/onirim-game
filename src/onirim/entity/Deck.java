@@ -144,5 +144,30 @@ public class Deck {
     public int deckSize(){
         return cards.size();
     }
+
+    //Mostrar as 7 cartas do baralho
+    public List<Card> ShowExtraCards()
+    {
+        List<Card> aux = new ArrayList<Card>();
+        
+        for (int i = 0; i < 7 && i<cards.size(); i++) {
+            aux.add(cards.get(i));
+        }
+        
+        return  aux;
+    }
+    
+    //adicionar uma carta ao topo do baralho
+    public void AddBeginCard(Card card)
+    {
+        List<Card> aux = new ArrayList<Card>();
+        int size=cards.size();
+        for(int i=0;i<size;i++){
+            aux.add(cards.remove(0));
+        }
+        
+        cards.add(card);
+        cards.addAll(aux);
+    }
 }
 

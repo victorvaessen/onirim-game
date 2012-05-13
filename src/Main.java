@@ -23,6 +23,8 @@ public class Main {
         do {
             do {
                 confirm=false;
+                System.out.println(onirim.getLabyrinthStack().toString() + "\n");
+                System.out.println(onirim.getHand().toString());
                 System.out.println(" \n Que Pretende:\n [1] Jogar \n [2] Descartar");
                 aux = sc.nextLine();
 
@@ -43,4 +45,16 @@ public class Main {
               
         } while (onirim.getState().equals(onirim.getPlayState()));
     }
+    
+    //funcões extra para teste
+    //ver as proximas 7 cartas do deck
+    
+    // acrescentar uma carta ao deck
+    
+    // acrescentar uma carta à mão
+    
+    // acrecentar uma carta à pilha de labirintos
+    
+    // acrescentar uma carta à pilha das portas
+    
 }
