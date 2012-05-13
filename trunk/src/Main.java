@@ -25,7 +25,7 @@ public class Main {
                 confirm=false;
                 System.out.println(onirim.getLabyrinthStack().toString() + "\n");
                 System.out.println(onirim.getHand().toString());
-                System.out.println(" \n Que Pretende:\n [1] Jogar \n [2] Descartar");
+                System.out.println(" \nYou Want: \n [1] Play \n [2] Discard");
                 aux = sc.nextLine();
 
                 if (aux.equalsIgnoreCase("1")) {
@@ -48,6 +48,7 @@ public class Main {
     
     //funcões extra para teste
     //ver as proximas 7 cartas do deck
+    
     
     // acrescentar uma carta ao deck
     
