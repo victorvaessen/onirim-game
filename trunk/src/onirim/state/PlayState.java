@@ -84,6 +84,7 @@ public class PlayState implements State {
                     }
                 }
                 //Case 3 card same color get the door corresponding
+                 //Falta conferir se deck tam mais cartas...
                 if (count == 2) {
                     cardFound = onirim.getDeck().searchCard(new Door(this.DoorCommand(((Labyrinth) onirim.getLabyrinthStack().showSequence().get(0)).getColor()), ((Labyrinth) onirim.getLabyrinthStack().showSequence().get(0)).getColor()));
                     if (cardFound != null) {
@@ -153,13 +154,19 @@ public class PlayState implements State {
     public void draw() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-
+    
+    @Override
+    public void shuffle() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
     public void Prophecy() {
 
         int index, k = 0;
         boolean valid = false;
         List<Card> cards = new ArrayList<Card>();
         List<Card> cardsToDeck = new ArrayList<Card>();
+         //Falta conferir se deck tem mais cartas...
         cards.addAll(onirim.getDeck().showTopCards());
 
         do {
@@ -241,4 +248,6 @@ public class PlayState implements State {
         }
 
     }
+
+   
 }
