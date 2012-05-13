@@ -140,5 +140,9 @@ public class Deck {
         cards.addAll(topCards);
         cards.addAll(aux);
     }
+    
+    public int deckSize(){
+        return cards.size();
+    }
 }
 

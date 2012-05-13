@@ -40,4 +40,11 @@ public class ShuffleState implements State{
     public void draw() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    @Override
+    public void shuffle() {
+        onirim.getDeck().addLimboCards(onirim.getLimbo().clear());
+        
+        onirim.getDeck().shuffle();
+    }
 }

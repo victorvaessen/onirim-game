@@ -133,4 +133,9 @@ public class Onirim {
     public void draw() {
         state.draw();
     }
+    
+    public void shuffle(){
+        state.shuffle();
+    }
+    
 }

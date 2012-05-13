@@ -58,4 +58,9 @@ public class StartState implements State {
     @Override
     public void draw() {
     }
+
+    @Override
+    public void shuffle() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
