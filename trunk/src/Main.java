@@ -23,8 +23,10 @@ public class Main {
         do {
             do {
                 confirm=false;
+                System.out.println(onirim.getDoorStack().toString() + "\n");
                 System.out.println(onirim.getLabyrinthStack().toString() + "\n");
                 System.out.println(onirim.getHand().toString());
+                System.out.println(onirim.getDeck().deckSize());
                 System.out.println(" \nYou Want: \n [1] Play \n [2] Discard");
                 aux = sc.nextLine();
 

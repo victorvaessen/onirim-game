@@ -29,6 +29,6 @@ public class Labyrinth extends Card {
     
     @Override
     public String toString() {
-        return "LABYRINTH\t" + color + " " + symbol + " " + this.getCommand();
+        return "LABYRINTH\t" + color + "\t" + symbol + "\t" + this.getCommand();
     }
 }

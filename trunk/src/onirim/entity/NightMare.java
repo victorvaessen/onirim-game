@@ -16,7 +16,7 @@ public class NightMare extends Card {
     
     @Override
     public String toString() {
-        return "NIGHTMARE" + " " + this.getCommand();
+        return "NIGHTMARE" + "\t" + this.getCommand();
     }
     
 }

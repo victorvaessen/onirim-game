@@ -59,7 +59,7 @@ public class Hand {
         String toString = "HAND:\n";
         
         for (int i = 0; i < cards.size(); i++) {
-            toString += "\n[" + (i + 1) + "] " + cards.get(i).toString();
+            toString += "\n" + cards.get(i).toString();
         }
         
         return toString;

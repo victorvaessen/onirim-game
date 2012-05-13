@@ -28,7 +28,7 @@ public class PlayState implements State {
 
     @Override
     public void buyHand() {
-        throw new UnsupportedOperationException("Not supported yet.");
+
     }
 
     @Override
@@ -64,7 +64,8 @@ public class PlayState implements State {
                 } else {   //the Labyrinth stack isn't empty
                     if (((Labyrinth) onirim.getLabyrinthStack().showLastCard()).getSymbol().equals(((Labyrinth) onirim.getHand().show().get(index)).getSymbol())) {
                         //The Last card played have the same symbol that card you wanna play
-                        System.out.println("You Can´t Play that card because of the symbol");
+                        System.out.println("You Can´t Play that card because of the symbol.");
+                        valid = true;
                     } else {
                         onirim.getLabyrinthStack().addCard(onirim.getHand().discard(index));
                         onirim.setState(onirim.getBuyState());
@@ -76,6 +77,7 @@ public class PlayState implements State {
             // verify sequence of last 3 cards
             if (onirim.getLabyrinthStack().showSequence() != null) {
                 //there are more than 2 card in the labyrinth stack
+                count = 0;
                 for (int j = 1; j < onirim.getLabyrinthStack().showSequence().size(); j++) {
                     if (((Labyrinth) onirim.getLabyrinthStack().showSequence().get(j)).getColor().
                             equals(((Labyrinth) onirim.getLabyrinthStack().showSequence().get(0)).getColor())) {
@@ -84,17 +86,13 @@ public class PlayState implements State {
                     }
                 }
                 //Case 3 card same color get the door corresponding
-
+                
                 if (count == 2) {
-                    //cardFound = onirim.getDeck().searchCard(); -> erro
-                    System.out.println(cardFound);
+                    cardFound = onirim.getDeck().searchCard(new Door(DoorCommand(((Labyrinth)(onirim.getLabyrinthStack().showLastCard())).getColor()), ((Labyrinth)(onirim.getLabyrinthStack().showLastCard())).getColor()));
                     if (cardFound != null) {
                         onirim.getDoorStack().addCard(cardFound);
                         onirim.getDeck().shuffle();
-                    } else {
-                        onirim.setState(onirim.getFinalLostState());
-                    }
-
+                    } 
                 }
 
             }
@@ -154,12 +152,12 @@ public class PlayState implements State {
 
     @Override
     public void draw() {
-        throw new UnsupportedOperationException("Not supported yet.");
+
     }
 
     @Override
     public void shuffle() {
-        throw new UnsupportedOperationException("Not supported yet.");
+
     }
 
     public void Prophecy() {

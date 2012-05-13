@@ -115,7 +115,7 @@ public class Deck {
         Card cardFound = null;
         
         for (int i = 0; i < cards.size(); i++) {
-            if (cards.get(i).equals(card)) {
+            if (cards.get(i).getCommand().equalsIgnoreCase(card.getCommand())) {
                 cardFound = cards.remove(i);
             }
         }
