@@ -32,4 +32,16 @@ public class Limbo {
         
         return limboCards;
     }
+    
+    @Override
+    public String toString() {
+            String toString = "LIMBO:\n";
+        
+        for (int i = 0; i < cards.size(); i++) {
+            toString += "\n" + cards.get(i).toString();
+        }
+        
+        return toString;
+       
+    }
 }

@@ -117,6 +117,7 @@ public class Deck {
         for (int i = 0; i < cards.size(); i++) {
             if (cards.get(i).getCommand().equalsIgnoreCase(card.getCommand())) {
                 cardFound = cards.remove(i);
+                break;
             }
         }
         
@@ -168,6 +169,18 @@ public class Deck {
         
         cards.add(card);
         cards.addAll(aux);
+    }
+    
+    @Override
+    public String toString() {
+            String toString = "DECK:\n";
+        
+        for (int i = 0; i < cards.size(); i++) {
+            toString += "\n" + cards.get(i).toString();
+        }
+        
+        return toString;
+       
     }
 }
 

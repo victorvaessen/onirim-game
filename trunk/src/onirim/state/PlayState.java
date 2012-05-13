@@ -28,7 +28,6 @@ public class PlayState implements State {
 
     @Override
     public void buyHand() {
-
     }
 
     @Override
@@ -58,7 +57,13 @@ public class PlayState implements State {
                 //Card in the hand
                 if (onirim.getLabyrinthStack().showLastCard() == null) {
                     // the Labyrinth stack is empty
-                    onirim.getLabyrinthStack().addCard(onirim.getHand().discard(index));
+                    if (onirim.getLabyrinthStack().addCard((Labyrinth) onirim.getHand().discard(index))) {
+                        cardFound = onirim.getDeck().searchCard(new Door(DoorCommand(((Labyrinth) (onirim.getLabyrinthStack().showLastCard())).getColor()), ((Labyrinth) (onirim.getLabyrinthStack().showLastCard())).getColor()));
+                        if (cardFound != null) {
+                            onirim.getDoorStack().addCard(cardFound);
+                            onirim.getDeck().shuffle();
+                        }
+                    }
                     onirim.setState(onirim.getBuyState());
                     valid = true;
                 } else {   //the Labyrinth stack isn't empty
@@ -67,35 +72,19 @@ public class PlayState implements State {
                         System.out.println("You Can´t Play that card because of the symbol.");
                         valid = true;
                     } else {
-                        onirim.getLabyrinthStack().addCard(onirim.getHand().discard(index));
+                        if (onirim.getLabyrinthStack().addCard((Labyrinth) onirim.getHand().discard(index))) {
+                            cardFound = onirim.getDeck().searchCard(new Door(DoorCommand(((Labyrinth) (onirim.getLabyrinthStack().showLastCard())).getColor()), ((Labyrinth) (onirim.getLabyrinthStack().showLastCard())).getColor()));
+                            if (cardFound != null) {
+                                onirim.getDoorStack().addCard(cardFound);
+                                onirim.getDeck().shuffle();
+                            }
+                        }
                         onirim.setState(onirim.getBuyState());
                         valid = true;
                     }
                 }
             }
 
-            // verify sequence of last 3 cards
-            if (onirim.getLabyrinthStack().showSequence() != null) {
-                //there are more than 2 card in the labyrinth stack
-                count = 0;
-                for (int j = 1; j < onirim.getLabyrinthStack().showSequence().size(); j++) {
-                    if (((Labyrinth) onirim.getLabyrinthStack().showSequence().get(j)).getColor().
-                            equals(((Labyrinth) onirim.getLabyrinthStack().showSequence().get(0)).getColor())) {
-                        //the card color is equal than the first of the sequence
-                        count++;
-                    }
-                }
-                //Case 3 card same color get the door corresponding
-                
-                if (count == 2) {
-                    cardFound = onirim.getDeck().searchCard(new Door(DoorCommand(((Labyrinth)(onirim.getLabyrinthStack().showLastCard())).getColor()), ((Labyrinth)(onirim.getLabyrinthStack().showLastCard())).getColor()));
-                    if (cardFound != null) {
-                        onirim.getDoorStack().addCard(cardFound);
-                        onirim.getDeck().shuffle();
-                    } 
-                }
-
-            }
             if (onirim.getDoorStack().VerifyAllDoorsCollected()) {
                 onirim.setState(onirim.getFinalWinState());
             }
@@ -152,12 +141,10 @@ public class PlayState implements State {
 
     @Override
     public void draw() {
-
     }
 
     @Override
     public void shuffle() {
-
     }
 
     public void Prophecy() {
