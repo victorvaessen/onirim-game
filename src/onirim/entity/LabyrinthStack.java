@@ -25,6 +25,7 @@ public class LabyrinthStack {
         
         if (sequenceCards.size()>0 && !sequenceCards.get(sequenceCards.size() -1).getColor().equalsIgnoreCase(card.getColor())) {
             sequenceCards.clear();
+            sequenceCards.add(card);
         } else
             sequenceCards.add(card);
         

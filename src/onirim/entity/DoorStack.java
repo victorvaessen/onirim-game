@@ -23,6 +23,10 @@ public class DoorStack {
         cards.add(card);
     }
     
+    public Card getCard(int index){
+        return cards.remove(index);
+    }
+    
     public boolean VerifyAllDoorsCollected(){
     
         if(this.cards.size()==8)

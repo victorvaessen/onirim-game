@@ -48,4 +48,9 @@ public class ShuffleState implements State {
         onirim.getDeck().shuffle();
         onirim.setState(onirim.getPlayState());
     }
+
+    @Override
+    public void event() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

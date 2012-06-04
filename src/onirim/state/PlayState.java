@@ -121,8 +121,8 @@ public class PlayState implements State {
                     //Make Prophecy
                     onirim.getDiscardStack().addCard(onirim.getHand().discard(index));
                     //Buy Fase
-                    onirim.setState(onirim.getBuyState());
-                    this.Prophecy();
+                    onirim.setState(onirim.getProphecyState());
+                    onirim.event();
                     valid = true;
 
                 } else {
@@ -235,5 +235,10 @@ public class PlayState implements State {
             return "DC";
         }
 
+    }
+
+    @Override
+    public void event() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

@@ -49,5 +49,10 @@ public class FinalLostState implements State {
         System.out.println("Perdeu o Jogo");       
     }
 
+    @Override
+    public void event() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
     
 }

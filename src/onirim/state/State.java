@@ -15,5 +15,6 @@ public interface State {
     public void discard();//descartar uma carta
     public void draw();//biscar uma carta
     public void shuffle();//baralhar
+    public void event();// Profecia ou Pesadelos
     
 }
