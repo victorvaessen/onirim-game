@@ -40,23 +40,23 @@ public class BuyState implements State {
 
         Card drawCard;
         boolean confirm = false;
-        if (onirim.getDeck().deckSize() > 0) {
-            do {
-                drawCard = onirim.getDeck().drawCard();
-                System.out.println("\nCard Draw: " + drawCard.toString() + "\n");
+       
+        while (onirim.getHand().show().size() < 5 && onirim.getDeck().deckSize() > 0) {
+            drawCard = onirim.getDeck().drawCard();
+            System.out.println("\nCard Draw: " + drawCard.toString() + "\n");
 
-                if (drawCard.getType().equals("DOOR")) {
-                    onirim.getLimbo().addCard(drawCard);
-                }
-                if (drawCard.getType().equals("NIGHTMARE")) {
-                    this.nightmarebase();
-                }
-                if(drawCard.getType().equals("LABYRINTH"))
-                {
-                    onirim.getHand().buyCard(drawCard);
-                }
-            } while (onirim.getHand().show().size() < 5 && onirim.getDeck().deckSize() > 0);
+            if (drawCard.getType().equals("DOOR")) {
+                onirim.getLimbo().addCard(drawCard);
+            }
+            if (drawCard.getType().equals("NIGHTMARE")) {
+                onirim.setState(onirim.getNightmareState());
+                onirim.event();
+            }
+            if (drawCard.getType().equals("LABYRINTH")) {
+                onirim.getHand().buyCard(drawCard);
+            }
         }
+
         if (onirim.getDeck().deckSize() == 0) {
             onirim.setState(onirim.getFinalLostState());
         } else {
@@ -93,5 +93,10 @@ public class BuyState implements State {
                 }
             } while (badHand);
         }
+    }
+
+    @Override
+    public void event() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

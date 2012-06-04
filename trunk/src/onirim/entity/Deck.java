@@ -96,6 +96,7 @@ public class Deck {
     //buy 5 cards
     public List<Card> buyCards() {
         List<Card> cardsPurchased = new ArrayList<Card>();
+        
         int size=cards.size();
         for (int i = 0; i < 5 && i < size; i++) {
             cardsPurchased.add(cards.remove(0));

@@ -47,4 +47,9 @@ public class FinalWinState implements State {
         System.out.println("Chegou ao Final do Jogo");
         System.out.println("Parabéns Ganhou o Jogo");
     }
+
+    @Override
+    public void event() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

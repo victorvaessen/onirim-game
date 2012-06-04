@@ -20,6 +20,8 @@ public class Onirim {
     private State finalWinState;
     private State finalLostState;
     private State state;
+    private State nightmareState;
+    private State prophecyState;
     
     private Deck deck;
     private Hand hand;
@@ -35,6 +37,9 @@ public class Onirim {
         shuffleState= new ShuffleState(this);
         finalWinState= new FinalWinState(this);
         finalLostState= new FinalLostState(this);
+        nightmareState= new NigthmareState(this);
+        prophecyState = new ProphecyState(this);
+        
         
         deck = new Deck();
         hand = new Hand();
@@ -130,6 +135,16 @@ public class Onirim {
     public State getFinalLostState() {
         return finalLostState;
     }
+
+    public State getNightmareState() {
+        return nightmareState;
+    }
+
+    public State getProphecyState() {
+        return prophecyState;
+    }
+    
+    
     
 
     public void buyHand() {
@@ -150,6 +165,10 @@ public class Onirim {
     
     public void shuffle(){
         state.shuffle();
+    }
+    
+    public void event(){
+        state.event();
     }
     
 }
