@@ -32,6 +32,20 @@ public class DiscardStack {
         return cards;
     }
 
+    public Card ShowLastCard(){
+        if(cards.size()>0)
+            return cards.get(cards.size()-1);
+        else
+            return null;
+    }
+    
+    public Card getLastCard(){
+         if(cards.size()>0)
+            return cards.remove(cards.size()-1);
+        else
+            return null;
+    }
+    
     @Override
     public String toString() {
             String toString = "DISCARDSTACK:\n";

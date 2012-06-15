@@ -93,6 +93,17 @@ public class Deck {
         return topCards;
     }
     
+    public List<Card> showTopCards(int number) {
+        List<Card> topCards = new ArrayList<Card>();
+         int size=cards.size();
+        for (int i = 0; i < number && i < size; i++) {
+            topCards.add(cards.remove(0));
+        }
+        
+        return topCards;
+    }
+    
+    
     //buy 5 cards
     public List<Card> buyCards() {
         List<Card> cardsPurchased = new ArrayList<Card>();
@@ -182,6 +193,30 @@ public class Deck {
         
         return toString;
        
+    }
+    
+    public void addExpansionCards(){
+        //add 3 red towers
+        cards.add(new Tower("TTMR","RED","MOON","SUNMOON",3));
+        cards.add(new Tower("TSMR","RED","MOON","SUN",4));
+        cards.add(new Tower("TNMR","RED","MOON","NONE",5));
+        
+        //add 3 blue towers
+        cards.add(new Tower("TMTB","BLUE","SUNMOON","MOON",3));
+        cards.add(new Tower("TMMB","BLUE","MOON","MOON",4));
+        cards.add(new Tower("TMNB","BLUE","NONE","MOON",5));
+        
+        //add 3 green towers
+        cards.add(new Tower("TSTG","GREEN","SUNMOON","SUN",3));
+        cards.add(new Tower("TSSG","GREEN","SUN","SUN",4));
+        cards.add(new Tower("TSNG","GREEN","NONE","SUN",5));
+        
+        //add 3 brown towers
+        cards.add(new Tower("TTSC","BROWN","SUN","SUNMOON",3));
+        cards.add(new Tower("TMSC","BROWN","SUN","MOON",4));
+        cards.add(new Tower("TNSC","BROWN","SUN","NONE",5));
+                         
+            
     }
 }
 
