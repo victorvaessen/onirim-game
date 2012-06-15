@@ -5,6 +5,7 @@
 package onirim.state;
 
 import onirim.Onirim;
+import onirim.OnirimExpansion;
 
 /**
  *
@@ -13,6 +14,7 @@ import onirim.Onirim;
 public class FinalWinState implements State {
 
     private Onirim onirim;
+    
 
     public FinalWinState(Onirim onirim) {
         this.onirim = onirim;
