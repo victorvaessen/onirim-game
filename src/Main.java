@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import onirim.Onirim;
+import onirim.OnirimExpansion;
 import onirim.entity.Card;
 import onirim.entity.Door;
 import onirim.entity.Labyrinth;
@@ -22,8 +23,21 @@ public class Main {
     private static String aux;
 
     public static void main(String[] args) {
-        Onirim onirim = new Onirim();
         boolean confirm;
+        
+        do{
+            System.out.println("Pretende Jogar:\n 1 - Básico\n 2-Expansao\n");
+            aux= sc.nextLine();
+            
+        }while(!aux.equals("1")&&!aux.equals("2"));
+        
+        if(aux.equals("1")){
+            Onirim onirim = new Onirim();
+        }   
+        else{
+            OnirimExpansion onirim = new OnirimExpansion();
+        }
+        
         onirim.buyHand();
 
         do {
