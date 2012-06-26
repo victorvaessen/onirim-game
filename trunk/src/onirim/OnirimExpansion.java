@@ -11,16 +11,20 @@ import onirim.state.*;
  *
  * @author Marco António
  */
-public class OnirimExpansion {
+public class OnirimExpansion extends Onirim{
 
     private State startState;
     private State playState;
     private State buyState;
     private State shuffleState;
-    private State finalWinState;
-    private State finalLostState;
+    private State finalState;
     private State state;
     private State nightmareState;
+    private State nightmareStateKey;
+    private State nightmareStateDoor;
+    private State nightmareStateDiscard;
+    private State nightmareStateTop;
+    private State nightmareTowerState;
     private State prophecyState;
     
     private Deck deck;
@@ -36,10 +40,14 @@ public class OnirimExpansion {
         playState = new PlayStateExpansion(this);
         buyState = new BuyStateExpansion(this);
         shuffleState= new ShuffleStateExpansion(this);
-        //finalWinState= new FinalWinState(this);
-        //finalLostState= new FinalLostState(this);
+        finalState= new FinalState(this);
         nightmareState= new NigthmareStateExpansion(this);
         prophecyState = new ProphecyStateExpansion(this);
+        nightmareStateKey = new NigthmareStateKeyE(this);
+        nightmareStateDoor = new NigthmareStateDoorE(this);
+        nightmareStateDiscard = new NigthmareStateDiscardHandE(this);
+        nightmareStateTop = new NigthmareStateTopE(this);
+        nightmareTowerState = new NightmareTowerState(this);
         
         
         deck = new Deck();
@@ -53,9 +61,6 @@ public class OnirimExpansion {
         
         state = startState;
     }
-
-   
-
     
     public Deck getDeck() {
         return deck;
@@ -139,12 +144,8 @@ public class OnirimExpansion {
         return shuffleState;
     }
     
-    public State getFinalWinState() {
-        return finalWinState;
-    }
-
-    public State getFinalLostState() {
-        return finalLostState;
+    public State getFinalState() {
+        return finalState;
     }
 
     public State getNightmareState() {
@@ -154,10 +155,28 @@ public class OnirimExpansion {
     public State getProphecyState() {
         return prophecyState;
     }
-    
-    
-    
 
+    public State getNightmareStateDiscard() {
+        return nightmareStateDiscard;
+    }
+
+    public State getNightmareStateDoor() {
+        return nightmareStateDoor;
+    }
+
+    public State getNightmareStateKey() {
+        return nightmareStateKey;
+    }
+
+    public State getNightmareStateTop() {
+        return nightmareStateTop;
+    }
+
+    public State getNightmareTowerState() {
+        return nightmareTowerState;
+    }
+    
+    
     public void buyHand() {
         state.buyHand();
     }

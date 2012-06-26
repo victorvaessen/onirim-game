@@ -86,7 +86,7 @@ public class PlayState implements State {
             }
 
             if (onirim.getDoorStack().VerifyAllDoorsCollected()) {
-                onirim.setState(onirim.getFinalWinState());
+                onirim.setState(onirim.getFinalState());
             }
 
 

@@ -122,7 +122,7 @@ public class PlayStateExpansion implements State {
                 }
             }
             if (onirim.getDoorStack().VerifyAllDoorsCollected() && onirim.getTowerStack().isBlock()) {
-                onirim.setState(onirim.getFinalWinState());
+                onirim.setState(onirim.getFinalState());
             }
         } while (valid == false);
     }
