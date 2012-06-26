@@ -97,143 +97,19 @@ public class TowerStack {
         else
             return null;
     }
+
+    @Override
+    public String toString() {
+        String toString="TOWER STACK:\n";
+        
+        for (int i = 0; i < cards.size(); i++) {
+            toString += "\n" + cards.get(i).toString();
+        }
+        return toString;
+    }
+    
+    
 }
-//    public boolean addCard(Tower card) {
-//        int k;
-//        String choose = "";
-//        List<Tower> auxseq = new ArrayList<Tower>();
-//
-//        if (cards.isEmpty()) {
-//            this.addCardRight(card);
-//            this.addCardLeft(card);
-//            cards.add(card);
-//            return false;
-//        } else {
-//            if (cards.size() < 4) {
-//                //escolhe lado
-//                if (choose.equalsIgnoreCase("Right")) {
-//                    this.addCardRight(card);
-//                    k = 0;
-//                    while (!sequenceCardsLeft.get(k).getColor().equalsIgnoreCase(card.getColor())) {//fim da sequencia com cor diferente da que foi inserida
-//                        auxseq.add(sequenceCardsLeft.get(k));
-//                        k++;
-//                    }
-//                    sequenceCardsLeft.clear();
-//                    sequenceCardsLeft.addAll(auxseq);
-//                    sequenceCardsLeft.add(0, card);
-//                    cards.add(0, card);
-//                    if (sequenceCardsLeft.size() == 4) {
-//                        block=true;
-//                        return true;
-//                    } else {
-//                        return false;
-//                    }
-//
-//                } else {
-//                    this.addCardLeft(card);
-//                    k = sequenceCardsRight.size() - 1;
-//                    while (!sequenceCardsRight.get(k).getColor().equalsIgnoreCase(card.getColor())) {//fim da sequencia com cor diferente da que foi inserida
-//                        auxseq.add(0, sequenceCardsRight.get(k));
-//                        k--;
-//                    }
-//                    sequenceCardsRight.clear();
-//                    sequenceCardsRight.addAll(auxseq);
-//                    sequenceCardsRight.add(card);
-//                    cards.add(card);
-//                    if (sequenceCardsRight.size() == 4) {
-//                        block=true;
-//                        return true;
-//                    } else {
-//                        return false;
-//                    }
-//                }
-//
-//            } else {
-//                //tamanho maior que 4
-//                if (choose.equalsIgnoreCase("Right")) {
-//                    return this.addCardRight(card);
-//                } else {
-//                    return this.addCardLeft(card);
-//                }
-//            }
-//        }
-//    }
-//
-//    public boolean addCardRight(Tower card) {
-//        int diferentes = 0, k;
-//        List<Tower> auxseq = new ArrayList<Tower>();
-//
-//        if (sequenceCardsRight.size() > 0) {
-//            for (int i = 0; i < sequenceCardsRight.size(); i++) {
-//                if (sequenceCardsRight.get(i).getColor().equalsIgnoreCase(card.getColor())) {
-//                    diferentes++;//conta quantas diferentes
-//                }
-//            }
-//            if (diferentes < sequenceCardsRight.size()) {//sequencia quebrada
-//                k = sequenceCardsRight.size() - 1;
-//                while (!sequenceCardsRight.get(k).getColor().equalsIgnoreCase(card.getColor())) {//fim da sequencia com cor diferente da que foi inserida
-//                    auxseq.add(0, sequenceCardsRight.get(k));
-//                    k--;
-//                }
-//                sequenceCardsRight.clear();
-//                sequenceCardsRight.addAll(auxseq);
-//                sequenceCardsRight.add(card);
-//                cards.add(card);
-//                return false;
-//            } else { //sequencia certa
-//                sequenceCardsRight.add(card);
-//                cards.add(card);
-//            }
-//            if (sequenceCardsRight.size() == 4) {//quatro cartas diferentes cores
-//                block=true;
-//                return true;
-//            }
-//        } else//esta vazia
-//        {
-//            sequenceCardsRight.add(card);
-//            cards.add(card);
-//
-//        }
-//        return false;
-//
-//    }
-//
-//    public boolean addCardLeft(Tower card) {
-//        int diferentes = 0, k;
-//        List<Tower> auxseq = new ArrayList<Tower>();
-//
-//        if (sequenceCardsLeft.size() > 0) {
-//            for (int i = 0; i < sequenceCardsLeft.size(); i++) {
-//                if (sequenceCardsLeft.get(i).getColor().equalsIgnoreCase(card.getColor())) {
-//                    diferentes++;//conta quantas diferentes
-//                }
-//            }
-//            if (diferentes < sequenceCardsLeft.size()) {//sequencia quebrada
-//                k = 0;
-//                while (!sequenceCardsLeft.get(k).getColor().equalsIgnoreCase(card.getColor())) {//fim da sequencia com cor diferente da que foi inserida
-//                    auxseq.add(sequenceCardsLeft.get(k));
-//                    k++;
-//                }
-//                sequenceCardsLeft.clear();
-//                sequenceCardsLeft.addAll(auxseq);
-//                sequenceCardsLeft.add(0, card);
-//                cards.add(0, card);
-//                return false;
-//            } else { //sequencia certa
-//                sequenceCardsLeft.add(0, card);
-//                cards.add(0, card);
-//
-//            }
-//            if (sequenceCardsLeft.size() == 4) {//quatro cartas diferentes cores
-//                block=true;
-//                return true;
-//            }
-//        } else//esta vazia
-//        {
-//            sequenceCardsLeft.add(0, card);
-//            cards.add(0, card);
-//        }
-//        return false;
-//
-//    }
+
+
 

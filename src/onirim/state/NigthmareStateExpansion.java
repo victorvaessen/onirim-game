@@ -52,7 +52,7 @@ public class NigthmareStateExpansion implements State {
     @Override
     public void event() {
 
-        int result;
+        int result = 0;
 
         System.out.println("NIGHTMARE");
 
@@ -73,6 +73,7 @@ public class NigthmareStateExpansion implements State {
                     result = 1;
                 } else //não tem carta chave na mão
                 {
+                    System.out.println(" Não tem cartas de chave");
                     result = 0;
                 }
             }
@@ -84,6 +85,7 @@ public class NigthmareStateExpansion implements State {
                     result = 1;
                 } else // a pilha de portas está vazia
                 {
+                    System.out.println(" Não tem cartas de porta");
                     result = 0;
                 }
             }
@@ -100,26 +102,31 @@ public class NigthmareStateExpansion implements State {
                 } else {
                     result = -1;
                 }
-            } else {
-                System.out.println("Opcao inválida");
-                result = 0;
             }
-        } while (result == 0);
+            if (!aux.equalsIgnoreCase("1") && !aux.equalsIgnoreCase("2") && !aux.equalsIgnoreCase("3") && !aux.equalsIgnoreCase("4")) {
+                    System.out.println("Opcao inválida");
+                    result = 0;
+            }
+            
+        }while (result == 0);
 
-        if (!onirim.getTowerStack().isBlock()) {
-            onirim.setState(onirim.getNightmareTowerState());
-            onirim.event();
-        }
+            if (!onirim.getTowerStack().isBlock()) {
+                onirim.setState(onirim.getNightmareTowerState());
+                onirim.event();
+            }
 
-        if (result == -1) {
-            //deck não tem mais cartas
-            onirim.setState(onirim.getFinalState());
-        } else {
-            onirim.setState(onirim.getBuyState());
-        }
+            if (result == -1) {
+                //deck não tem mais cartas
+                onirim.setState(onirim.getFinalState());
+            } else {
+                onirim.setState(onirim.getBuyState());
+            }
+        
     }
 
-public boolean verifyCard(List<Card> cards, String type) {
+    
+
+    public boolean verifyCard(List<Card> cards, String type) {
 
         int index;
 

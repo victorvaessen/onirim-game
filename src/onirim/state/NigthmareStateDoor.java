@@ -6,7 +6,6 @@ package onirim.state;
 
 import java.util.Scanner;
 import onirim.Onirim;
-import onirim.OnirimExpansion;
 
 /**
  *
@@ -52,11 +51,11 @@ public class NigthmareStateDoor implements State {
         int index;
         
         do{
-        System.out.println(onirim.getDoorStack().toString() + "\n");
+            System.out.println(onirim.getDoorStack().toString() + "\n");
 
-        System.out.println("Choose a card Door to discard from the Doorstack");
+            System.out.println("Choose a card Door to discard from the Doorstack");
 
-        aux = sc.nextLine();
+            aux = sc.nextLine();
 
        
             index = -1;

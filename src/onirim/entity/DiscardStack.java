@@ -46,6 +46,18 @@ public class DiscardStack {
             return null;
     }
     
+    public Card getLastNightmareCard(){
+        
+        for(int i=cards.size()-1; i>-1; i--){
+            if(cards.get(i).getType().equalsIgnoreCase("NIGHTMARE"))
+            {
+                return cards.remove(i);
+            }
+        }
+        return null;
+    
+    }
+    
     @Override
     public String toString() {
             String toString = "DISCARDSTACK:\n";
@@ -57,5 +69,7 @@ public class DiscardStack {
         return toString;
        
     }
+    
+    
     
 }
