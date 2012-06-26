@@ -17,10 +17,13 @@ public class Onirim {
     private State playState;
     private State buyState;
     private State shuffleState;
-    private State finalWinState;
-    private State finalLostState;
+    private State finalState;
     private State state;
     private State nightmareState;
+    private State nightmareStateKey;
+    private State nightmareStateDoor;
+    private State nightmareStateDiscard;
+    private State nightmareStateTop;
     private State prophecyState;
     
     private Deck deck;
@@ -35,9 +38,12 @@ public class Onirim {
         playState = new PlayState(this);
         buyState = new BuyState(this);
         shuffleState= new ShuffleState(this);
-        finalWinState= new FinalWinState(this);
-        finalLostState= new FinalLostState(this);
+        finalState= new FinalState(this);
         nightmareState= new NigthmareState(this);
+        nightmareStateKey = new NigthmareStateKey(this);
+        nightmareStateDoor = new NigthmareStateDoor(this);
+        nightmareStateDiscard = new NigthmareStateDiscardHand(this);
+        nightmareStateTop = new NigthmareStateTop(this);
         prophecyState = new ProphecyState(this);
         
         
@@ -127,17 +133,29 @@ public class Onirim {
     public State getShuffleState() {
         return shuffleState;
     }
+
+    public State getFinalState() {
+        return finalState;
+    }
     
-    public State getFinalWinState() {
-        return finalWinState;
-    }
-
-    public State getFinalLostState() {
-        return finalLostState;
-    }
-
     public State getNightmareState() {
         return nightmareState;
+    }
+
+    public State getNightmareStateDiscard() {
+        return nightmareStateDiscard;
+    }
+
+    public State getNightmareStateDoor() {
+        return nightmareStateDoor;
+    }
+
+    public State getNightmareStateKey() {
+        return nightmareStateKey;
+    }
+
+    public State getNightmareStateTop() {
+        return nightmareStateTop;
     }
 
     public State getProphecyState() {

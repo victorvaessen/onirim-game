@@ -24,6 +24,7 @@ public class Main {
 
     public static void main(String[] args) {
         boolean confirm;
+        Onirim onirim;
         
         do{
             System.out.println("Pretende Jogar:\n 1 - Básico\n 2-Expansao\n");
@@ -32,10 +33,10 @@ public class Main {
         }while(!aux.equals("1")&&!aux.equals("2"));
         
         if(aux.equals("1")){
-            Onirim onirim = new Onirim();
+            onirim = new Onirim();
         }   
         else{
-            OnirimExpansion onirim = new OnirimExpansion();
+            onirim = new OnirimExpansion();
         }
         
         onirim.buyHand();

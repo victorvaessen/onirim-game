@@ -7,20 +7,21 @@ package onirim.state;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import onirim.Onirim;
+import onirim.OnirimExpansion;
 import onirim.entity.Card;
+import onirim.entity.Labyrinth;
 
 /**
  *
  * @author Bino
  */
-public class ProphecyState implements State {
+public class NigthmareStateKeyE implements State {
 
-    private Onirim onirim;
+    private OnirimExpansion onirim;
     Scanner sc = new Scanner(System.in);
     private String aux;
 
-    public ProphecyState(Onirim onirim) {
+    public NigthmareStateKeyE(OnirimExpansion onirim) {
         this.onirim = onirim;
     }
 
@@ -52,15 +53,37 @@ public class ProphecyState implements State {
     @Override
     public void event() {
 
-        int index, k = 0;
+        int index = -1;
+        int k = 0;
         boolean valid = false;
         List<Card> cards = new ArrayList<Card>();
         List<Card> cardsToDeck = new ArrayList<Card>();
 
+        do {
+            System.out.println(onirim.getHand().toString());
+
+            System.out.println("Choose the key card to discard: ");
+
+            aux = sc.nextLine();
+            index = -1;
+            for (int i = 0; i < onirim.getHand().show().size(); i++) {
+                if (onirim.getHand().show().get(i).getCommand().equalsIgnoreCase(aux)) {
+                    if (((Labyrinth) onirim.getHand().show().get(i)).getSymbol().equalsIgnoreCase("KEY")) {
+                        index = i;
+                    } else {
+                        index = -2;
+                    }
+                    System.out.println("A Carta que escolheu não é uma carta chave");
+                    break;
+                }
+            }
+        } while (index < -1);
+
+        onirim.getDiscardStack().addCard(onirim.getHand().discard(index));
+
         cards.addAll(onirim.getDeck().showTopCards());
         if (cards != null) {
             do {
-                System.out.println("PROPHECY");
 
                 for (int j = 0; j < cards.size(); j++) {
                     System.out.println(cards.get(j));
@@ -121,11 +144,7 @@ public class ProphecyState implements State {
                     valid = true;
                 }
             } while (valid == false);
-              onirim.setState(onirim.getBuyState());
         }
-        else
-            onirim.setState(onirim.getFinalState());
     }
 }
-    
-   
+       

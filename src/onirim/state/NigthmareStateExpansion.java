@@ -4,14 +4,11 @@
  */
 package onirim.state;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import onirim.OnirimExpansion;
-
 import onirim.entity.Card;
 import onirim.entity.Labyrinth;
-import onirim.entity.Tower;
 
 /**
  *
@@ -55,8 +52,7 @@ public class NigthmareStateExpansion implements State {
     @Override
     public void event() {
 
-        boolean confirm = false;
-        int result, index;
+        int result;
 
         System.out.println("NIGHTMARE");
 
@@ -70,17 +66,40 @@ public class NigthmareStateExpansion implements State {
             aux = sc.nextLine();
 
             if (aux.equalsIgnoreCase("1")) {
-                result = this.NightMare1();
+                if (this.verifyCard(onirim.getHand().show(), "LABYRINTH")) {
+                    //tem carta chave na mão
+                    onirim.setState(onirim.getNightmareStateKey());
+                    onirim.event();
+                    result = 1;
+                } else //não tem carta chave na mão
+                {
+                    result = 0;
+                }
             }
             if (aux.equalsIgnoreCase("2")) {
-                result = this.NightMare2();
-
+                if (!onirim.getDoorStack().showAll().isEmpty()) {
+                    //a pilha de portas não está vazia
+                    onirim.setState(onirim.getNightmareStateDoor());
+                    onirim.event();
+                    result = 1;
+                } else // a pilha de portas está vazia
+                {
+                    result = 0;
+                }
             }
             if (aux.equalsIgnoreCase("3")) {
-                result = this.NightMare3();
+                onirim.setState(onirim.getNightmareStateTop());
+                onirim.event();
+                result = 1;
             }
             if (aux.equalsIgnoreCase("4")) {
-                result = this.NightMare4();
+                if (onirim.getDeck().deckSize() >= 5) {
+                    onirim.setState(onirim.getNightmareStateDiscard());
+                    onirim.event();
+                    result = 1;
+                } else {
+                    result = -1;
+                }
             } else {
                 System.out.println("Opcao inválida");
                 result = 0;
@@ -88,239 +107,42 @@ public class NigthmareStateExpansion implements State {
         } while (result == 0);
 
         if (!onirim.getTowerStack().isBlock()) {
-            //TowerStack Isn't blocked
-
-            do {
-                System.out.println("Escolha o que pretende fazer");
-                System.out.println("1 - Colocar Nightmare no Limbo");
-                System.out.println("2 - Descartar uma carta torre da pilha");
-                aux = sc.nextLine();
-            } while (!aux.equalsIgnoreCase("1") && !aux.equalsIgnoreCase("2"));
-            if (aux.equalsIgnoreCase("1")) {
-                onirim.getLimbo().addCard(onirim.getDiscardStack().getLastCard());
-            }
-            if (aux.equalsIgnoreCase("2")) {
-
-                for (int i = 0; i < onirim.getTowerStack().ShowAll().size(); i++) {
-                    System.out.println(onirim.getTowerStack().ShowAll().get(i).toString());
-                }
-                do {
-                    System.out.println("Escolha a Carta Torre que pretende remover");
-
-                    aux = sc.nextLine();
-
-                    index = -1;
-                    for (int i = 0; i < onirim.getDoorStack().showAll().size(); i++) {
-                        if (onirim.getDoorStack().showAll().get(i).getCommand().equalsIgnoreCase(aux)) {
-                            index = i;
-                            break;
-                        }
-                    }
-
-                    if (index == -1) {
-                        System.out.println("Command don't exist or cards aren't there");
-                    } else {
-                        if (((Tower) onirim.getTowerStack().showLeftCard(index)).getSymbolRight().
-                                contains(((Tower) onirim.getTowerStack().showRightCard(index)).getSymbolLeft())) {
-                            System.out.println("Simbolos das cartas adjacentes não podem ficar juntos");
-                        } else {
-                            onirim.getDiscardStack().addCard(onirim.getTowerStack().removeCard(index));
-                        }
-                        confirm = true;
-                    }
-                } while (confirm == false);
-            }
+            onirim.setState(onirim.getNightmareTowerState());
+            onirim.event();
         }
 
         if (result == -1) {
             //deck não tem mais cartas
-            onirim.setState(onirim.getFinalLostState());
+            onirim.setState(onirim.getFinalState());
         } else {
             onirim.setState(onirim.getBuyState());
         }
     }
 
-    public int NightMare1() {
-
-        int index = -1;
-        int k = 0;
-        boolean valid = false;
-        List<Card> cards = new ArrayList<Card>();
-        List<Card> cardsToDeck = new ArrayList<Card>();
-
-        do {
-            System.out.println(onirim.getHand().toString());
-
-            System.out.println("Choose the key card to discard: ");
-
-            aux = sc.nextLine();
-            index = -1;
-            for (int i = 0; i < onirim.getHand().show().size(); i++) {
-                if (onirim.getHand().show().get(i).getCommand().equalsIgnoreCase(aux)) {
-                    if (((Labyrinth) onirim.getHand().show().get(i)).getSymbol().equalsIgnoreCase("KEY")) {
-                        index = i;
-                    } else {
-                        index = -2;
-                    }
-                    System.out.println("A Carta que escolheu não é uma carta chave");
-                    break;
-                }
-            }
-        } while (index < -1);
-        if (index == -1) {
-            return 0; // não consegue realizar comando
-        } else {
-            onirim.getDiscardStack().addCard(onirim.getHand().discard(index));
-
-            cards.addAll(onirim.getDeck().showTopCards());
-            if (cards != null) {
-                do {
-
-                    for (int j = 0; j < cards.size(); j++) {
-                        System.out.println(cards.get(j));
-                    }
-
-
-                    System.out.println("Choose a card to discard from the top of the deck: ");
-
-                    aux = sc.nextLine();
-
-                    // Card its in sequence?
-                    index = -1;
-                    for (int i = 0; i < cards.size(); i++) {
-                        if (cards.get(i).getCommand().equalsIgnoreCase(aux)) {
-                            index = i;
-                            break;
-                        }
-                    }
-                    if (index == -1) {
-                        System.out.println("Command don't exist or the card you want, isn't on sequence");
-                    } else {
-                        // Card is in the sequence
-                        //discard the card
-                        onirim.getDiscardStack().addCard(cards.remove(index));
-
-                        // reorganize the other 4 cards
-                        while (cards.size() > 0) {
-
-                            k++;
-
-                            for (int j = 0; j < cards.size(); j++) {
-                                System.out.println(cards.get(j));
-                            }
-
-                            System.out.println("Choose a card to put in " + k + " position on deck");
-
-                            aux = sc.nextLine();
-
-                            index = -1;
-                            for (int i = 0; i < cards.size(); i++) {
-                                if (cards.get(i).getCommand().equalsIgnoreCase(aux)) {
-                                    index = i;
-                                    break;
-                                }
-                            }
-
-                            if (index == -1) {
-                                System.out.println("Command don't exist or the card you want, isn't on the sequence");
-                                k--;
-                            } else {
-                                //Put the card on aux stack
-                                cardsToDeck.add(cards.remove(index));
-                            }
-
-                        }
-                        //put the cards on the top of the deck
-                        onirim.getDeck().addBegin(cardsToDeck);
-                        valid = true;
-                    }
-                } while (valid == false);
-                return 1; // realizou comando com sucesso
-            } else {
-                return -1; // não existem cartas no deck  
-            }
-        }
-    }
-
-    public int NightMare2() {
+public boolean verifyCard(List<Card> cards, String type) {
 
         int index;
 
-        System.out.println(onirim.getDoorStack().toString() + "\n");
-
-        System.out.println("Choose a card Door to discard from the Doorstack");
-
-        aux = sc.nextLine();
-
         index = -1;
-        for (int i = 0; i < onirim.getDoorStack().showAll().size(); i++) {
-            if (onirim.getDoorStack().showAll().get(i).getCommand().equalsIgnoreCase(aux)) {
-                index = i;
-                break;
+        for (int i = 0; i < cards.size(); i++) {
+            if (type.equalsIgnoreCase("LABYRINTH")) {
+                if (cards.get(i).getType().equalsIgnoreCase(type)) {
+                    if (((Labyrinth) cards.get(i)).getSymbol().equalsIgnoreCase("KEY")) {
+                        index = i;
+                        break;
+                    }
+                }
+            } else {
+                if (cards.get(i).getType().equalsIgnoreCase(type)) {
+                    index = i;
+                    break;
+                }
             }
         }
         if (index == -1) {
-            return 0;//não tem a carta que pretende
-        } else {
-            onirim.getLimbo().addCard(onirim.getDoorStack().getCard(index));
-            return 1;
+            return false;
         }
-    }
+        return true;
 
-    public int NightMare3() {
-
-        List<Card> cards = new ArrayList<Card>();
-
-        cards.addAll(onirim.getDeck().showTopCards());
-
-        if (cards != null) {
-            for (int i = 0; i < cards.size(); i++) {
-                System.out.println(cards.get(i));
-            }
-
-            while (cards.size() > 0) {
-                if (cards.get(0).getType().equalsIgnoreCase("DOOR") || cards.get(0).getType().equalsIgnoreCase("NIGHTMARE")) {
-                    onirim.getLimbo().addCard(cards.remove(0));
-                } else {
-                    onirim.getDiscardStack().addCard(cards.remove(0));
-                }
-            }
-
-            return 1; // comando sucesso
-        }
-
-        return -1; // não existem mais cartas  no deck
-    }
-
-    public int NightMare4() {
-
-        boolean badHand;
-        onirim.getDiscardStack().addCards(onirim.getHand().discardAll());
-
-        onirim.getHand().init(onirim.getDeck().buyCards());
-
-        if (onirim.getHand().show().size() < 5) {
-            return -1;
-        }
-        do {
-            badHand = false;
-            for (int i = 0; i < onirim.getHand().show().size(); i++) {
-                if (onirim.getHand().show().get(i).getType().equals("DOOR")
-                        || onirim.getHand().show().get(i).getType().equals("NIGHTMARE")) {
-                    onirim.getLimbo().addCard(onirim.getHand().discard(i));
-                    if (onirim.getDeck().deckSize() > 0) {
-                        onirim.getHand().buyCard(onirim.getDeck().drawCard());
-                        badHand = true;
-                    } else {
-                        return -1;
-                    }
-                }
-            }
-        } while (badHand);
-
-        onirim.getDeck().addLimboCards(onirim.getLimbo().clear());
-        onirim.getDeck().shuffle();
-
-        return 1;
     }
 }

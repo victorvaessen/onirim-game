@@ -126,7 +126,7 @@ public class ProphecyStateExpansion implements State {
                 } while (valid == false);
                 onirim.setState(onirim.getBuyState());
             } else {
-                onirim.setState(onirim.getFinalLostState());
+                onirim.setState(onirim.getFinalState());
             }
         } else {
             //Prophecy tower
@@ -175,7 +175,7 @@ public class ProphecyStateExpansion implements State {
                 } while (valid == false);
                 onirim.setState(onirim.getBuyState());
             } else {
-                onirim.setState(onirim.getFinalLostState());
+                onirim.setState(onirim.getFinalState());
             }
         }
     }

@@ -60,7 +60,7 @@ public class BuyStateExpansion implements State {
         }
 
         if (onirim.getDeck().deckSize() == 0) {
-            onirim.setState(onirim.getFinalLostState());
+            onirim.setState(onirim.getFinalState());
         } else {
             onirim.setState(onirim.getShuffleState());
         }
