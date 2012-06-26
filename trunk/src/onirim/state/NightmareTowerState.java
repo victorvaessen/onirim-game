@@ -59,11 +59,13 @@ public class NightmareTowerState implements State {
                 System.out.println("2 - Descartar uma carta torre da pilha");
                 aux = sc.nextLine();
             } while (!aux.equalsIgnoreCase("1") && !aux.equalsIgnoreCase("2"));
-        } else {
-            onirim.getLimbo().addCard(onirim.getDiscardStack().getLastCard());
+        } 
+        else{
+            aux="1";
         }
 
         if (aux.equalsIgnoreCase("1")) {
+            onirim.getLimbo().addCard(onirim.getDiscardStack().getLastNightmareCard());
         }
         if (aux.equalsIgnoreCase("2")) {
 

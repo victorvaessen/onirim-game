@@ -24,27 +24,33 @@ public class Main {
 
     public static void main(String[] args) {
         boolean confirm;
+        boolean expansion;
         Onirim onirim;
         
         do{
-            System.out.println("Pretende Jogar:\n 1 - Básico\n 2-Expansao\n");
+            System.out.println("Pretende Jogar:\n 1 - Básico\n 2 - Expansao\n");
             aux= sc.nextLine();
             
         }while(!aux.equals("1")&&!aux.equals("2"));
         
         if(aux.equals("1")){
             onirim = new Onirim();
+            expansion=false;
         }   
         else{
             onirim = new OnirimExpansion();
+            expansion=true;
         }
         
         onirim.buyHand();
 
         do {
+               
             do {
                 confirm=false;
-                
+                if(expansion){
+                     System.out.println(((OnirimExpansion)onirim).getTowerStack().toString() + "\n");
+                }
                 System.out.println(onirim.getLimbo().toString() + "\n");
                 System.out.println(onirim.getDiscardStack().toString() + "\n");
                 System.out.println(onirim.getDoorStack().toString() + "\n");

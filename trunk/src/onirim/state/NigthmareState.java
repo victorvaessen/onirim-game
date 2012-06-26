@@ -53,7 +53,7 @@ public class NigthmareState implements State {
     @Override
     public void event() {
         
-        int result;
+        int result=0;
         
         System.out.println("NIGHTMARE");
         
@@ -65,7 +65,6 @@ public class NigthmareState implements State {
             System.out.println("4 - Discard the hand and buy another like on the beginning");
 
             aux = sc.nextLine();
-        
            if (aux.equalsIgnoreCase("1")) {
                 if (this.verifyCard(onirim.getHand().show(), "LABYRINTH")) {
                     //tem carta chave na mão
@@ -85,6 +84,7 @@ public class NigthmareState implements State {
                     result = 1;
                 } else // a pilha de portas está vazia
                 {
+                    System.out.println("Não há cartas porta para colocar no limbo");
                     result = 0;
                 }
             }
@@ -100,12 +100,15 @@ public class NigthmareState implements State {
                     result = 1;
                 } else {
                     result = -1;
-                }
-            } else {
+                }   
+            }
+            if(!aux.equalsIgnoreCase("1") && !aux.equalsIgnoreCase("2") && !aux.equalsIgnoreCase("3") && !aux.equalsIgnoreCase("4"))
+            {
                 System.out.println("Opcao inválida");
                 result = 0;
             }
         } while (result == 0);
+        
         
         if(result==-1){
             //deck não tem mais cartas

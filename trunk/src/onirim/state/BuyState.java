@@ -48,16 +48,18 @@ public class BuyState implements State {
             if (drawCard.getType().equals("DOOR")) {
                 onirim.getLimbo().addCard(drawCard);
             }
-            if (drawCard.getType().equals("NIGHTMARE")) {
+            if (drawCard.getType().equals("NIGHTMARE")) { 
+                onirim.getDiscardStack().addCard(drawCard);
                 onirim.setState(onirim.getNightmareState());
                 onirim.event();
+                
             }
             if (drawCard.getType().equals("LABYRINTH")) {
                 onirim.getHand().buyCard(drawCard);
             }
         }
 
-        if (onirim.getDeck().deckSize() == 0) {
+        if (onirim.getDeck().deckSize() < 1) {
             onirim.setState(onirim.getFinalState());
         } else {
             onirim.setState(onirim.getShuffleState());
