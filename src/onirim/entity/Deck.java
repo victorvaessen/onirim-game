@@ -18,54 +18,55 @@ public class Deck {
     
     public Deck() {
         cards = new ArrayList<Card>();
+        CardsFactory factory = new CardsFactory();
         
         //adding 8 doors
         for (int i = 0; i < 2; i++) {
-            cards.add(new Door("DR", "RED"));
-            cards.add(new Door("DB", "BLUE"));
-            cards.add(new Door("DG", "GREEN"));
-            cards.add(new Door("DC", "BROWN"));
+            cards.add(factory.criaCard("DOOR","DR", "RED"));
+            cards.add(factory.criaCard("DOOR","DB", "BLUE"));
+            cards.add(factory.criaCard("DOOR","DG", "GREEN"));
+            cards.add(factory.criaCard("DOOR","DC", "BROWN"));
         }
         
         //adding 9 labyrints red sun
         for (int i = 0; i < 9; i++) {
-            cards.add(new Labyrinth("SUN", "LSR", "RED"));
+            cards.add(factory.criaCard("LABYRINTH","LSR", "RED","SUN"));
         }
         
         //adding 8 labyrints blue sun
         for (int i = 0; i < 8; i++) {
-            cards.add(new Labyrinth("SUN", "LSB", "BLUE"));
+            cards.add(factory.criaCard("LABYRINTH","LSB", "BLUE","SUN"));
         }
         
         //adding 7 labyrints green sun
         for (int i = 0; i < 7; i++) {
-            cards.add(new Labyrinth("SUN", "LSG", "GREEN"));
+            cards.add(factory.criaCard("LABYRINTH","LSG", "GREEN","SUN"));
         }
         
         //adding 6 labyrints brown sun
         for (int i = 0; i < 6; i++) {
-            cards.add(new Labyrinth("SUN", "LSC", "BROWN"));
+           cards.add(factory.criaCard("LABYRINTH","LSC", "BROWN","SUN"));
         }
         
         //adding 12 labyrints keys
         for (int i = 0; i < 3; i++) {
-            cards.add(new Labyrinth("KEY", "LKR", "RED"));
-            cards.add(new Labyrinth("KEY", "LKB", "BLUE"));
-            cards.add(new Labyrinth("KEY", "LKG", "GREEN"));
-            cards.add(new Labyrinth("KEY", "LKC", "BROWN"));
+            cards.add(factory.criaCard("LABYRINTH","LKR", "RED","KEY"));
+            cards.add(factory.criaCard("LABYRINTH","LKB", "BLUE","KEY"));
+            cards.add(factory.criaCard("LABYRINTH","LKG", "GREEN","KEY"));
+            cards.add(factory.criaCard("LABYRINTH","LKC", "BROWN","KEY"));
         }
         
-        //adding 4 labyrints moon
+        //adding 16 labyrints moon
         for (int i = 0; i < 4; i++) {
-            cards.add(new Labyrinth("MOON", "LMR", "RED"));
-            cards.add(new Labyrinth("MOON", "LMB", "BLUE"));
-            cards.add(new Labyrinth("MOON", "LMG", "GREEN"));
-            cards.add(new Labyrinth("MOON", "LMC", "BROWN"));
+            cards.add(factory.criaCard("LABYRINTH","LMR", "RED","MOON"));
+            cards.add(factory.criaCard("LABYRINTH","LMB", "BLUE","MOON"));
+            cards.add(factory.criaCard("LABYRINTH","LMG", "GREEN","MOON"));
+            cards.add(factory.criaCard("LABYRINTH","LMC", "BROWN","MOON"));
         }
         
         //adding 10 nightmares
         for (int i = 0; i < 10; i++) {
-            cards.add(new NightMare());
+            cards.add(factory.criaCard("NIGHTMARE", "N"));
         } 
     }
      
@@ -196,27 +197,29 @@ public class Deck {
     }
     
     public void addExpansionCards(){
-        //add 3 red towers
-        cards.add(new Tower("TTMR","RED","MOON","SUNMOON",3));
-        cards.add(new Tower("TSMR","RED","MOON","SUN",4));
-        cards.add(new Tower("TNMR","RED","MOON","NONE",5));
+        
+        CardsFactory factory = new CardsFactory();
+        
+        // add 3 red towers
+        cards.add(factory.criaCard("TOWER","TTMR","RED","MOON","SUNMOON",3));
+        cards.add(factory.criaCard("TOWER","TSMR","RED","MOON","SUN",4));
+        cards.add(factory.criaCard("TOWER","TNMR","RED","MOON","NONE",5));
+        
         
         //add 3 blue towers
-        cards.add(new Tower("TMTB","BLUE","SUNMOON","MOON",3));
-        cards.add(new Tower("TMMB","BLUE","MOON","MOON",4));
-        cards.add(new Tower("TMNB","BLUE","NONE","MOON",5));
+        cards.add(factory.criaCard("TOWER","TMTB","BLUE","SUNMOON","MOON",3));
+        cards.add(factory.criaCard("TOWER","TMMB","BLUE","MOON","MOON",4));
+        cards.add(factory.criaCard("TOWER","TMNB","BLUE","NONE","MOON",5)); 
         
         //add 3 green towers
-        cards.add(new Tower("TSTG","GREEN","SUNMOON","SUN",3));
-        cards.add(new Tower("TSSG","GREEN","SUN","SUN",4));
-        cards.add(new Tower("TSNG","GREEN","NONE","SUN",5));
+        cards.add(factory.criaCard("TOWER","TSTG","GREEN","SUNMOON","SUN",3));
+        cards.add(factory.criaCard("TOWER","TSSG","GREEN","SUN","SUN",4));
+        cards.add(factory.criaCard("TOWER","TSNG","GREEN","NONE","SUN",5));
         
         //add 3 brown towers
-        cards.add(new Tower("TTSC","BROWN","SUN","SUNMOON",3));
-        cards.add(new Tower("TMSC","BROWN","SUN","MOON",4));
-        cards.add(new Tower("TNSC","BROWN","SUN","NONE",5));
-                         
-            
+        cards.add(factory.criaCard("TOWER","TTSC","BROWN","SUN","SUNMOON",3));
+        cards.add(factory.criaCard("TOWER","TMSC","BROWN","SUN","MOON",4));
+        cards.add(factory.criaCard("TOWER","TNSC","BROWN","SUN","NONE",5));            
     }
 }
 
